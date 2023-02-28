@@ -15,12 +15,6 @@ let sliderImg = '';
 for (let i = 0; i < imgArray.length; i++) {
     const newImgWrapper = `<div class="imgWrapper">
                                 <img class="img" src="${imgArray[i]}" alt="">
-                                <div id="up" class="arrow">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                </div>
-                                <div id="down" class="arrow">
-                                    <i class="fa-solid fa-arrow-down"></i>
-                                </div>
                             </div>`;
 
     sliderImg += newImgWrapper;       
@@ -32,4 +26,40 @@ imgListDom.innerHTML = sliderImg;
 const imgWrappersDom = document.getElementsByClassName('imgWrapper');
 console.log(imgWrappersDom);
 
-imgWrappersDom[1].classList.add('show');
+let selectedImg = 0;
+
+imgWrappersDom[selectedImg].classList.add('show');
+
+
+const upDom = document.querySelector('#up');
+const downDom = document.querySelector('#down');
+
+downDom.addEventListener('click', function(){
+    if (selectedImg < imgWrappersDom.length - 1) {
+        imgWrappersDom[selectedImg].classList.remove('show');
+        selectedImg++;
+        imgWrappersDom[selectedImg].classList.add('show');
+
+        upDom.classList.remove('hide');
+
+        if (selectedImg == imgWrappersDom.length - 1) {
+            downDom.classList.add('hide');
+        }
+    }
+});
+
+
+upDom.addEventListener('click', function(){
+    if (selectedImg > 0) {
+        imgWrappersDom[selectedImg].classList.remove('show');
+        selectedImg--;
+        imgWrappersDom[selectedImg].classList.add('show');
+
+        downDom.classList.remove('hide');
+
+        if (selectedImg == 0) {
+            upDom.classList.add('hide');
+        }
+    }
+});
+

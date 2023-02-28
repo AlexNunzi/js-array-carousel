@@ -12,6 +12,7 @@
 .slider {
     height: 70vh;
     margin-top: 15vh;
+    position: relative;
 }
 
 .imgList {
@@ -19,8 +20,8 @@
 }
 
 .imgWrapper {
+    height: 100%;
     display: none;
-    position: relative;
 }
 
 .img {
@@ -49,6 +50,10 @@
     cursor: pointer;
 }
 
+.hide{
+    display: none;
+}
+
 #up{
     top: 10px;
 }
@@ -56,3 +61,4 @@
 #down{
     bottom: 10px;
 }
+
